@@ -23,20 +23,31 @@ def printCoursesInfo(courses):
     for course in courses:
         printCourseInfo(course)
 
+def printProfInfo(prof):
+    print("==========================================")
+    print("Name: " + prof["name"])
+    print("Rating: " + str(prof["average_rating"]))
+    print("Courses Taught: " + "[" + ", ".join(prof["courses"]) + "]")
+    print("Reviews: " + printReviews(prof["reviews"] if printReviews(prof["reviews"]) is not None else "None"))
+    print("==========================================")
+
+def printProfsInfo(profs):
+    for prof in profs:
+        printProfInfo(prof)
     
 
 def main():
     course = planetterp.course(name="CMSC430", reviews=False)
     courses = planetterp.courses(department="CMSC", limit=1)
-    prof = planetterp.professor(name="Herve Franceschi", reviews=False)
+    prof = planetterp.professor(name="Herve Franceschi", reviews=True)
     # profs = planetterp.professors(type_="ta", limit=2)
     # grades = planetterp.grades(course="MATH140", professor="Jon Snow")
     # course["professors"] = list(set(course["professors"]))
     # course["professors"] = list(set(course["professors"]))
-    printCoursesInfo([course])
+    # printCoursesInfo([course])
     # print(course)
+    printProfInfo(prof)
     # print(prof)
-    # print(profs)
     # print(grades)
     
 
