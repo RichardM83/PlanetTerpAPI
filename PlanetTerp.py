@@ -7,9 +7,7 @@ BASE_URL = 'https://api.planetterp.com/v1/'
 def course(name, reviews = False):
     params = {"name" : name, "reviews": "true" if reviews else "false"}
     url = BASE_URL + "course?" + urlencode(params)
-    result = planetterp.requests.get(url).json()
-    result["professors"] = sorted(list(set(result["professors"])))
-    return result
+    return requests.get(url).json()
 
 
 def courses(department = None, reviews = False, limit = 100, offset = 0):
